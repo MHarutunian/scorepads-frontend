@@ -5,8 +5,8 @@ import {
   Switch
 } from 'react-router-dom';
 
-import List from './UserManagement/List';
-import Header from './Header';
+import List from '../UserManagement/List';
+import Header from '../Header';
 
 function App() {
   return (

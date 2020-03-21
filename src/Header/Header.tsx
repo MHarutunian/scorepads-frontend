@@ -16,7 +16,7 @@ const Header = () => {
           Doppelkopf
         </GameLink>
         <GameLink to="/jank">
-          Jank
+          JanK
         </GameLink>
       </div>
     </React.Fragment>
