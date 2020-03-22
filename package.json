@@ -22,12 +22,16 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
+    "stylelint": "^13.2.1",
+    "stylelint-config-standard": "^20.0.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint '**/*.ts?(x)'",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint 'src/**/*.ts?(x)'",
+    "lint:css": "stylelint 'src/**/*.css'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
