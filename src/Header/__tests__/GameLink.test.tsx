@@ -2,11 +2,11 @@ import React from 'react';
 import { createMemoryHistory } from 'history';
 import {
   MemoryRouter,
-  Router
+  Router,
 } from 'react-router-dom';
 import {
   fireEvent,
-  render
+  render,
 } from '@testing-library/react';
 
 import GameLink from '../GameLink';
@@ -17,7 +17,8 @@ describe('GameLink', () => {
       <GameLink to="/anything">
         Some Game
       </GameLink>,
-      { wrapper: MemoryRouter });
+      { wrapper: MemoryRouter },
+    );
 
     expect(getByText('Some Game')).toBeInTheDocument();
   });
