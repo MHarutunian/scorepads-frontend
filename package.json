@@ -26,6 +26,8 @@
     "styled-components": "^5.1.0",
     "stylelint": "^13.3.2",
     "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
@@ -33,7 +35,7 @@
     "build": "react-scripts build",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint 'src/**/*.ts?(x)'",
-    "lint:css": "stylelint 'src/**/*.css'",
+    "lint:css": "stylelint 'src/**/*.ts?(x)'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
