@@ -1,7 +1,6 @@
 import React from 'react';
 
 import GameLink from './GameLink';
-import './Header.css';
 
 const Header = () => (
   <>
