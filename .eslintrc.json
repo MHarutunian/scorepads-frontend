@@ -1,0 +1,48 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb",
+    "plugin:jest/all",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": [
+    "jest",
+    "jsx-a11y",
+    "react-hooks"
+  ],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "jest/lowercase-name": [
+      "error",
+      {
+        "ignore": [
+          "describe"
+        ]
+      }
+    ],
+    "jest/prefer-expect-assertions": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}

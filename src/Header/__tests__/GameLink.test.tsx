@@ -1,12 +1,11 @@
 import React from 'react';
-import { createMemoryHistory } from 'history';
 import {
+  BrowserRouter,
   MemoryRouter,
-  Router
 } from 'react-router-dom';
 import {
   fireEvent,
-  render
+  render,
 } from '@testing-library/react';
 
 import GameLink from '../GameLink';
@@ -17,25 +16,25 @@ describe('GameLink', () => {
       <GameLink to="/anything">
         Some Game
       </GameLink>,
-      { wrapper: MemoryRouter });
+      { wrapper: MemoryRouter },
+    );
 
     expect(getByText('Some Game')).toBeInTheDocument();
   });
 
   it('renders clickable link', () => {
-    const history = createMemoryHistory();
     const { getByText } = render(
-      <Router history={history}>
+      <BrowserRouter>
         <GameLink to="/some-game">
           Some Game
         </GameLink>
-      </Router>,
+      </BrowserRouter>,
     );
 
     const gameLink = getByText('Some Game');
 
     fireEvent.click(gameLink);
 
-    expect(history.location.pathname).toBe('/some-game');
+    expect(window.location.pathname).toBe('/some-game');
   });
 });
