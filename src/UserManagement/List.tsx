@@ -1,6 +1,8 @@
 import React from 'react';
 import User from './User';
+import players from './players.json';
 
+<<<<<<< Updated upstream
 const List = () => {
   return (
     <>
@@ -16,3 +18,20 @@ const List = () => {
 }
 
 export default List;
+=======
+const List = () => (
+  <>
+    <h1>Alle Spieler</h1>
+    <ul>
+      {players.map(element => (
+    <li>
+      <User name={element.name}></User> 
+    </li>
+  ))}
+    </ul>
+  </>
+);
+
+
+export default List;
+>>>>>>> Stashed changes

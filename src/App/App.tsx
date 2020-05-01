@@ -7,6 +7,7 @@ import {
 
 import List from '../UserManagement/List';
 import Header from '../Header';
+import User from '../UserManagement/User';
 
 function App() {
   return (
