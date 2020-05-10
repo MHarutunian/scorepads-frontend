@@ -1,8 +1,5 @@
 import React from 'react';
 import User from './User';
-<<<<<<< HEAD
-import players from './players.json';
-=======
 import useApi from '../hooks/useApi';
 
 type Player = {
