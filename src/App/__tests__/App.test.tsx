@@ -3,7 +3,11 @@ import {
   fireEvent,
   render,
 } from '@testing-library/react';
+
 import App from '../App';
+
+// TODO: Clean this up once we move the /players API call to its own component
+jest.spyOn(window, 'fetch').mockImplementation(() => new Promise<Response>(() => { }));
 
 describe('App', () => {
   it('renders header by default', () => {

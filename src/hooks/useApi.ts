@@ -9,9 +9,9 @@ const BASE_URL = '/api';
  * @returns the error and the result returned from the endpoint.
  *    Only one of these will be set at any time.
  */
-const useApi = <T>(path: string): [number | null, T | null] => {
+const useApi = <T>(path: string): [Error | null, T | null] => {
   const [result, setResult] = useState<T | null>(null);
-  const [error, setError] = useState<number | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const sendRequest = async () => {
