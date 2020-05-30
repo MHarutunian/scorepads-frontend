@@ -20,13 +20,13 @@ const TermList = () => {
       <form>
         <AddLabel>
           Begriff hinzufügen:
-          <TermInput type="text" name="word" />
+          <TermInput type="text" name="term" />
         </AddLabel>
-        <AddButton name="Submit">+</AddButton>
+        <AddButton type="submit">+</AddButton>
       </form>
       <ul>
-        {terms && terms.map(({ value }) => (
-          <Term value={value} />
+        {terms && terms.map(({ _id, value }) => (
+          <Term key={_id} value={value} />
         ))}
       </ul>
     </>

@@ -1,14 +1,14 @@
 import React from 'react';
 import { DeleteButton, TermText } from './ui';
 
-interface TermProps {
+type TermProps = {
   value: string
 }
 
 const Term = ({ value } : TermProps) => (
   <li>
     <TermText>{value}</TermText>
-    <DeleteButton>X</DeleteButton>
+    <DeleteButton type="button">X</DeleteButton>
   </li>
 );
 

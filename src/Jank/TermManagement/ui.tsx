@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const fontSize = '20';
+
+const Button = styled.button`
   margin: 10px;
   padding: 5px 10px;
   background-color: white;
@@ -14,12 +16,12 @@ export const DeleteButton = styled(Button)`
 
 export const AddButton = styled(Button)`
   color: green;
-  font-size: 20px;
+  font-size: ${fontSize}px;
 `;
 
 export const TermText = styled.span`
   margin-top: 10px;
-  font-size: 20px;
+  font-size: ${fontSize}px;
   text-transform: capitalize;
 `;
 
@@ -30,5 +32,5 @@ export const TermInput = styled.input`
 
 export const AddLabel = styled.label`
   padding: 5px;
-  font-size: 20px;
+  font-size: ${fontSize}px;
 `;
