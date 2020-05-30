@@ -7,6 +7,7 @@ import {
 
 import List from '../UserManagement/List';
 import Header from '../Header';
+import TermList from '../Jank/TermManagement/TermList';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <h2>TODO</h2>
         </Route>
         <Route path="/jank">
-          <h2>TODO</h2>
+          <TermList />
         </Route>
       </Switch>
     </BrowserRouter>
