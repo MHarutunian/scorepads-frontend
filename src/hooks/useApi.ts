@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
-const BASE_URL = '/api';
+import { get } from '../services/api.service';
+import useErrorHandler from './useErrorHandler';
 
 /**
  * Fetches resources from an API endpoint and returns them.
@@ -11,28 +12,15 @@ const BASE_URL = '/api';
  */
 const useApi = <T>(path: string): [Error | null, T | null] => {
   const [result, setResult] = useState<T | null>(null);
-  const [error, setError] = useState<Error | null>(null);
+  const callback = useCallback(async () => {
+    setResult(null);
+    setResult(await get(path));
+  }, [path]);
+  const [error, handler] = useErrorHandler(callback);
 
   useEffect(() => {
-    const sendRequest = async () => {
-      setResult(null);
-      setError(null);
-
-      try {
-        const response = await fetch(`${BASE_URL}${path}`);
-
-        if (!response.ok) {
-          throw new Error(`Request to ${path} failed: ${response.statusText}`);
-        }
-
-        setResult(await response.json());
-      } catch (e) {
-        setError(e);
-      }
-    };
-
-    sendRequest();
-  }, [path]);
+    handler();
+  }, [handler]);
 
   return [error, result];
 };

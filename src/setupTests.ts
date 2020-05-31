@@ -5,4 +5,5 @@
 import '@testing-library/jest-dom/extend-expect';
 
 jest.spyOn(window, 'fetch').mockImplementation(
-  () => Promise.reject(new Error('Fetch was called without being mocked')));
+  () => Promise.reject(new Error('Fetch was called without being mocked')),
+);
