@@ -1,18 +1,29 @@
-import React from 'react';
-import Term from './Term';
-import useApi from '../../hooks/useApi';
-import { AddButton, AddLabel, TermInput } from './ui';
+import React, { useEffect, useReducer } from 'react';
 
-type Terms = {
-  _id: string,
-  value: string
-}
+import useApi from '../../hooks/useApi';
+import reducer from './reducer';
+import TermItem from './Term';
+import { Term } from './types';
+import {
+  AddButton,
+  AddLabel,
+  ErrorText,
+  TermInput,
+} from './ui';
+import { setTerms } from './actions';
 
 const TermList = () => {
-  const [error, terms] = useApi<Terms[]>('/jank/terms');
+  const [error, apiTerms] = useApi<Term[]>('/jank/terms');
+  const [terms, dispatch] = useReducer(reducer, []);
+
+  useEffect(() => {
+    if (apiTerms !== null) {
+      dispatch(setTerms(apiTerms));
+    }
+  }, [apiTerms]);
 
   if (error) {
-    return <span>Begriffe konnten leider nicht geladen werden</span>;
+    return <ErrorText>Begriffe konnten leider nicht geladen werden</ErrorText>;
   }
   return (
     <>
@@ -26,7 +37,7 @@ const TermList = () => {
       </form>
       <ul>
         {terms && terms.map(({ _id, value }) => (
-          <Term key={_id} value={value} />
+          <TermItem key={_id} id={_id} value={value} dispatch={dispatch} />
         ))}
       </ul>
     </>

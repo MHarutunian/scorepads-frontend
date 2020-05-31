@@ -19,6 +19,11 @@ export const AddButton = styled(Button)`
   font-size: ${fontSize}px;
 `;
 
+export const ErrorText = styled.span`
+  color: red;
+  font-weight: bold;
+`;
+
 export const TermText = styled.span`
   margin-top: 10px;
   font-size: ${fontSize}px;
