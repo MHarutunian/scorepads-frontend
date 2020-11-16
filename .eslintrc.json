@@ -11,6 +11,9 @@
     "react-hooks"
   ],
   "rules": {
+    "no-use-before-define": "off",
+    "no-shadow": "off",
+    "no-undef": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
