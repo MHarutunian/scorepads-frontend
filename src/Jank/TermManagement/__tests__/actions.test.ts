@@ -1,11 +1,11 @@
 import { setTerms, addTerm, deleteTerm } from '../actions';
-import { ActionType } from '../types';
+import { TermActionType } from '../types';
 import terms from '../../../../mocks/terms';
 
 describe('term actions', () => {
   describe('setTerms', () => {
     it('has type `Set`', () => {
-      expect(setTerms(terms)).toHaveProperty('type', ActionType.Set);
+      expect(setTerms(terms)).toHaveProperty('type', TermActionType.Set);
     });
 
     it('has provided terms as its payload', () => {
@@ -17,7 +17,7 @@ describe('term actions', () => {
     const [term] = terms;
 
     it('has type `Add`', () => {
-      expect(addTerm(term)).toHaveProperty('type', ActionType.Add);
+      expect(addTerm(term)).toHaveProperty('type', TermActionType.Add);
     });
 
     it('has provided term as its payload', () => {
@@ -29,7 +29,7 @@ describe('term actions', () => {
     const { _id: id } = terms[0];
 
     it('has type `Delete`', () => {
-      expect(deleteTerm(id)).toHaveProperty('type', ActionType.Delete);
+      expect(deleteTerm(id)).toHaveProperty('type', TermActionType.Delete);
     });
 
     it('has provided ID as its payload', () => {
