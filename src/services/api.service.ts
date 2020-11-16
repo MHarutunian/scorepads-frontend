@@ -35,8 +35,8 @@ const request = async (method: string, path: string, init?: RequestInit) => {
 const requestWithData = (method: string, path: string, data: object) => request(method, path, {
   headers: {
     'Content-Type': 'application/json',
-    body: JSON.stringify(data),
   },
+  body: JSON.stringify(data),
 });
 
 /**
