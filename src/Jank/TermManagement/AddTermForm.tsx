@@ -2,7 +2,9 @@ import React, { useState, useCallback } from 'react';
 import { post } from '../../services/api.service';
 import { addTerm } from './actions';
 import useErrorHandler from '../../hooks/useErrorHandler';
-import { AddButton, AddLabel, TermInput } from './ui';
+import {
+  AddButton, AddLabel, TermInput, ErrorText,
+} from './ui';
 import { TermAction } from './types';
 
 type AddTermFormProps = {
@@ -16,7 +18,7 @@ const AddTermForm = ({ dispatch }: AddTermFormProps) => {
     dispatch(addTerm(term));
     setTermInput('');
   }, [dispatch, termInput]);
-  const [addError, onSubmit] = useErrorHandler(callback);
+  const [error, onSubmit] = useErrorHandler(callback);
 
   return (
     <form onSubmit={(event) => {
@@ -35,7 +37,7 @@ const AddTermForm = ({ dispatch }: AddTermFormProps) => {
         />
       </AddLabel>
       <AddButton type="submit">+</AddButton>
-      {addError && <p>Begriff konnte nicht hinzugefügt werden</p>}
+      {error && <ErrorText>Begriff konnte nicht hinzugefügt werden</ErrorText>}
     </form>
   );
 };

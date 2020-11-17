@@ -2,6 +2,8 @@ import React from 'react';
 import {
   fireEvent,
   render,
+  waitForElementToBeRemoved,
+  within,
 } from '@testing-library/react';
 
 import TermList from '../TermList';
@@ -44,16 +46,19 @@ describe('TermList', () => {
 
   it('removes a term from the list', async () => {
     const remove = jest.spyOn(ApiService, 'remove');
-    remove.mockResolvedValue([{ _id: '2', value: 'Tor' }]);
+    remove.mockResolvedValue(null);
 
     get.mockResolvedValue([{ _id: '1', value: 'Abend' }, { _id: '2', value: 'Tor' }]);
 
-    const { findByText, findAllByText } = render(<TermList />);
+    const { queryByText, findByText } = render(<TermList />);
 
-    const removeButtons = await findAllByText('X');
-    fireEvent.click(removeButtons[0]);
+    const listItem = (await findByText('Abend')).closest('li');
+    expect(listItem).toBeInTheDocument();
+
+    const removeButton = within(listItem!).getByText('X');
+    fireEvent.click(removeButton);
 
     expect(remove).toHaveBeenCalledWith('/jank/terms/1');
-    expect(await findByText('Abend')).not.toBeInTheDocument();
+    await waitForElementToBeRemoved(() => queryByText('Abend'));
   });
 });

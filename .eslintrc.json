@@ -14,14 +14,7 @@
     "no-use-before-define": "off",
     "no-shadow": "off",
     "no-undef": "off",
-    "jest/no-hooks": [
-      "error",
-      {
-        "allow": [
-          "beforeEach"
-        ]
-      }
-    ],
+    "jest/no-hooks": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
