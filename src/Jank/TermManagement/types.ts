@@ -1,4 +1,4 @@
-export enum ActionType {
+export enum TermActionType {
   Set,
   Add,
   Delete,
@@ -9,7 +9,7 @@ export interface Term {
   value: string,
 }
 
-export interface Action {
-  type: ActionType,
+export interface TermAction {
+  type: TermActionType,
   payload: Term[] | Term | string,
 }

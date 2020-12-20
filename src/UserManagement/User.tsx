@@ -15,4 +15,8 @@ const User = ({ name, picture = defaultPicture }: UserProps) => (
   </>
 );
 
+User.defaultProps = {
+  picture: defaultPicture,
+};
+
 export default User;

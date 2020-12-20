@@ -1,4 +1,4 @@
-import { Term, Action, ActionType } from './types';
+import { Term, TermAction, TermActionType } from './types';
 
 /**
  * State reducer for terms, handling an action that was dispatched.
@@ -7,13 +7,13 @@ import { Term, Action, ActionType } from './types';
  * @param action the dispatched action to handle
  * @returns the new state after the dispatched action was handled
  */
-const reducer = (state: Term[], action: Action) => {
+const reducer = (state: Term[], action: TermAction) => {
   switch (action.type) {
-    case ActionType.Set:
+    case TermActionType.Set:
       return action.payload as Term[];
-    case ActionType.Add:
+    case TermActionType.Add:
       return [...state, action.payload as Term];
-    case ActionType.Delete:
+    case TermActionType.Delete:
       return state.filter(({ _id }) => _id !== action.payload);
     default:
       return state;

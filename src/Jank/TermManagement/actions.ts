@@ -1,4 +1,4 @@
-import { Term, ActionType } from './types';
+import { Term, TermActionType } from './types';
 
 /**
  * Creates and returns an action to set the list of available terms.
@@ -7,7 +7,7 @@ import { Term, ActionType } from './types';
  * @returns the action that can be dispatched to set terms
  */
 export const setTerms = (terms: Term[]) => ({
-  type: ActionType.Set,
+  type: TermActionType.Set,
   payload: terms,
 });
 
@@ -18,10 +18,9 @@ export const setTerms = (terms: Term[]) => ({
  * @returns the action that can be dispatched to add a term
  */
 export const addTerm = (term: Term) => ({
-  type: ActionType.Add,
+  type: TermActionType.Add,
   payload: term,
 });
-
 
 /**
  * Creates and returns an action to delete a term.
@@ -30,6 +29,6 @@ export const addTerm = (term: Term) => ({
  * @returns the action that can be dispatched to delete a term
  */
 export const deleteTerm = (id: string) => ({
-  type: ActionType.Delete,
+  type: TermActionType.Delete,
   payload: id,
 });

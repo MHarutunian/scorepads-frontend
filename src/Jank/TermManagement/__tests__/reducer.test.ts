@@ -1,6 +1,6 @@
 import { setTerms, addTerm, deleteTerm } from '../actions';
 import reducer from '../reducer';
-import { Action } from '../types';
+import { TermAction } from '../types';
 import terms from '../../../../mocks/terms';
 
 describe('term reducer', () => {
@@ -73,7 +73,7 @@ describe('term reducer', () => {
     const action = {
       type: 'unknown',
       payload: 'unknown',
-    } as unknown as Action;
+    } as unknown as TermAction;
 
     it('returns empty state if state is empty', () => {
       expect(reducer([], action)).toStrictEqual([]);

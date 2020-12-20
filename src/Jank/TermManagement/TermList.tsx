@@ -4,13 +4,9 @@ import useApi from '../../hooks/useApi';
 import reducer from './reducer';
 import TermItem from './Term';
 import { Term } from './types';
-import {
-  AddButton,
-  AddLabel,
-  ErrorText,
-  TermInput,
-} from './ui';
+import { ErrorText } from './ui';
 import { setTerms } from './actions';
+import AddTermForm from './AddTermForm';
 
 const TermList = () => {
   const [error, apiTerms] = useApi<Term[]>('/jank/terms');
@@ -28,13 +24,7 @@ const TermList = () => {
   return (
     <>
       <h1>Begriffe verwalten</h1>
-      <form>
-        <AddLabel>
-          Begriff hinzufügen:
-          <TermInput type="text" name="term" />
-        </AddLabel>
-        <AddButton type="submit">+</AddButton>
-      </form>
+      <AddTermForm dispatch={dispatch} />
       <ul>
         {terms && terms.map(({ _id, value }) => (
           <TermItem key={_id} id={_id} value={value} dispatch={dispatch} />
