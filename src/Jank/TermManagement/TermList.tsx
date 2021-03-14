@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 
 import useApi from '../../hooks/useApi';
 import reducer from './reducer';

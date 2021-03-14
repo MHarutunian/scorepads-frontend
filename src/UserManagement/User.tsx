@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './User.css';
 import defaultPicture from './user_default.png';
 

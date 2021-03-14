@@ -1,9 +1,9 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { Link } from './ui';
 
 interface GameLinkProps {
-  children: React.ReactNode,
+  children: ReactNode,
   to: string
 }
 

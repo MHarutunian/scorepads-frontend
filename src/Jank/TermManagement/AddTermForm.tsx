@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { post } from '../../services/api.service';
 import { addTerm } from './actions';
 import useErrorHandler from '../../hooks/useErrorHandler';

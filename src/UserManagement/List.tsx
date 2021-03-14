@@ -1,4 +1,3 @@
-import React from 'react';
 import User from './User';
 import useApi from '../hooks/useApi';
 

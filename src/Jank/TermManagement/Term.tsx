@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import useErrorHandler from '../../hooks/useErrorHandler';
 import { remove } from '../../services/api.service';
