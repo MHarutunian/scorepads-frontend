@@ -1,5 +1,3 @@
-import React from 'react';
-
 import GameLink from './GameLink';
 
 const Header = () => (
