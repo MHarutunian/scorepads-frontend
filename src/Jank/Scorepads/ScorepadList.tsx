@@ -21,7 +21,7 @@ const ScorepadList = () => {
   }
   return (
     <>
-      <h3>Bestehende Spiele</h3>
+      <h3>Bestehende Spiele:</h3>
       <div>
         {scorepads && scorepads.map(({ _id, players, createdAt }) => (
           <ScorepadItem
