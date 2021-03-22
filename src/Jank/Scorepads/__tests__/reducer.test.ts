@@ -11,19 +11,19 @@ describe('scorepad reducer', () => {
 
     it('replaces existing scorepads', () => {
       const existingScorepads = [{
-        _id: '4',
+        id: '4',
         game: 'Jank',
         players: [{
-          _id: '3',
+          id: '3',
           name: 'Marco',
           picture: '',
         },
         {
-          _id: '2',
+          id: '2',
           name: 'Anna',
           picture: '',
         }],
-        createdAt: '2021-02-07T16:22:55.000Z',
+        date: '2021-02-07T16:22:55.000Z',
       }];
       expect(reducer(existingScorepads, setScorepads(scorepads))).toStrictEqual(scorepads);
     });
@@ -36,7 +36,7 @@ describe('scorepad reducer', () => {
 
     it('deletes a scorepad from a list of existing scorepads', () => {
       const [firstScorepad, secondScorepad] = scorepads;
-      const { _id: id } = secondScorepad;
+      const { id } = secondScorepad;
       const state = reducer(scorepads, deleteScorepad(id));
 
       expect(state).toContain(firstScorepad);
@@ -45,19 +45,19 @@ describe('scorepad reducer', () => {
 
     it('deletes nothing if scorepad does not exist in list of existing scorepads', () => {
       const existingScorepads = [{
-        _id: '4',
+        id: '4',
         game: 'Jank',
         players: [{
-          _id: '3',
+          id: '3',
           name: 'Marco',
           picture: '',
         },
         {
-          _id: '2',
+          id: '2',
           name: 'Anna',
           picture: '',
         }],
-        createdAt: '2021-02-07T16:22:55.000Z',
+        date: '2021-02-07T16:22:55.000Z',
       }];
       expect(reducer(existingScorepads, deleteScorepad('42'))).toStrictEqual(existingScorepads);
     });

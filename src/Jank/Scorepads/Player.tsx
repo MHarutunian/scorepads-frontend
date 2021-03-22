@@ -1,4 +1,4 @@
-import { Text } from './ui';
+import { Text, Picture } from './ui';
 import defaultPicture from '../../UserManagement/user_default.png';
 
 type PlayerProps = {
@@ -8,7 +8,7 @@ type PlayerProps = {
 
 const Player = ({ name, picture = defaultPicture }: PlayerProps) => (
   <>
-    <img src={picture} alt="PIC" />
+    <Picture src={`/picture/${picture}`} alt="PIC" />
     <Text>
       {name}
     </Text>

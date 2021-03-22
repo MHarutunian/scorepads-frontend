@@ -1,14 +1,14 @@
 export interface Player {
-  _id: string,
+  id: string,
   name: string,
   picture: string,
 }
 
 export interface Scorepad {
-  _id: string,
+  id: string,
   game: string,
   players: Player[],
-  createdAt: string,
+  date: string,
 }
 
 export enum ScorepadActionType {

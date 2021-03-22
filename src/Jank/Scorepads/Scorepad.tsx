@@ -1,37 +1,38 @@
 import { useCallback } from 'react';
+import { format } from 'date-fns';
 import useErrorHandler from '../../hooks/useErrorHandler';
 import { remove } from '../../services/api.service';
 import { deleteScorepad } from './actions';
 import PlayerItem from './Player';
-import { Player, ScorepadAction } from './types';
+import { Scorepad as ScorepadType, ScorepadAction } from './types';
 import {
   LoadButton, DeleteButton, Frame, Text, ErrorText,
 } from './ui';
 
 type ScorepadProps = {
-  id: string;
-  players: Player[];
-  createdAt: string;
+  scorepad: ScorepadType;
   dispatch: (action: ScorepadAction) => void;
 }
 
 const Scorepad = ({
-  id, players, createdAt, dispatch,
+  scorepad, dispatch,
 }: ScorepadProps) => {
+  const { id, players, date } = scorepad;
   const callback = useCallback(async () => {
     await remove(`/scorepads/${id}`);
     dispatch(deleteScorepad(id));
   }, [dispatch, id]);
   const [error, onClick] = useErrorHandler(callback);
+  const formattedDate = format(new Date(date), ' dd.MM.yyyy');
 
   return (
     <Frame>
-      {players && players.map(({ _id, name, picture }) => (
-        <PlayerItem key={_id} name={name} picture={picture} />
+      {players && players.map(({ id: playerId, name, picture }) => (
+        <PlayerItem key={playerId} name={name} picture={picture} />
       ))}
       <Text>
         Erstellt am:
-        {createdAt}
+        {formattedDate}
       </Text>
       <LoadButton type="button">Spiel laden</LoadButton>
       <DeleteButton onClick={onClick} type="button">Spiel löschen</DeleteButton>

@@ -26,7 +26,7 @@ describe('scorepad actions', () => {
   });
 
   describe('deleteScorepad', () => {
-    const { _id: id } = scorepads[0];
+    const { id } = scorepads[0];
 
     it('has type `Delete`', () => {
       expect(deleteScorepad(id)).toHaveProperty('type', ScorepadActionType.Delete);

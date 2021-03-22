@@ -5,6 +5,10 @@ export const Frame = styled.div`
   padding: 10px 20px;
   border-radius: 3px;
   border: 2px solid grey;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Text = styled.span`
@@ -30,4 +34,10 @@ export const DeleteButton = styled(Button)`
 export const ErrorText = styled.span`
   color: red;
   font-weight: bold;
+`;
+
+export const Picture = styled.img`
+  width: 50px;
+  vertical-align:middle;
+  border-radius: 50%;
 `;

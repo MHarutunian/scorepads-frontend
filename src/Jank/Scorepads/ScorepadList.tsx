@@ -1,13 +1,12 @@
 import { useEffect, useReducer } from 'react';
-import useApi from '../../hooks/useApi';
+import useScorepads from '../../hooks/useScorepads';
 import ScorepadItem from './Scorepad';
 import { setScorepads } from './actions';
 import reducer from './reducer';
 import { ErrorText } from './ui';
-import { Scorepad } from './types';
 
 const ScorepadList = () => {
-  const [error, apiScorepads] = useApi<Scorepad[]>('/scorepads/?game=JanK');
+  const [error, apiScorepads] = useScorepads('JanK');
   const [scorepads, dispatch] = useReducer(reducer, []);
 
   useEffect(() => {
@@ -16,6 +15,8 @@ const ScorepadList = () => {
     }
   }, [apiScorepads]);
 
+  scorepads.reverse();
+
   if (error) {
     return <ErrorText>Scorepads konnten leider nicht geladen werden</ErrorText>;
   }
@@ -23,12 +24,10 @@ const ScorepadList = () => {
     <>
       <h3>Bestehende Spiele:</h3>
       <div>
-        {scorepads && scorepads.map(({ _id, players, createdAt }) => (
+        {scorepads && scorepads.map((scorepad) => (
           <ScorepadItem
-            key={_id}
-            id={_id}
-            players={players}
-            createdAt={createdAt}
+            key={scorepad.id}
+            scorepad={scorepad}
             dispatch={dispatch}
           />
         ))}

@@ -14,7 +14,7 @@ const reducer = (state: Scorepad[], action: ScorepadAction) => {
     case ScorepadActionType.Add:
       return [...state, action.payload as Scorepad];
     case ScorepadActionType.Delete:
-      return state.filter(({ _id }) => _id !== action.payload);
+      return state.filter(({ id }) => id !== action.payload);
     default:
       return state;
   }

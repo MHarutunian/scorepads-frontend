@@ -19,4 +19,12 @@ module.exports = (app) => {
       ws: true,
     }),
   );
+
+  app.use(
+    '/picture',
+    createProxyMiddleware({
+      target,
+      changeOrigin: true,
+    }),
+  );
 };
