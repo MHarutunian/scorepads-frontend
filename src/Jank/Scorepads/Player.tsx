@@ -8,7 +8,7 @@ type PlayerProps = {
 
 const Player = ({ name, picture = defaultPicture }: PlayerProps) => (
   <>
-    <Picture src={`/picture/${picture}`} alt="PIC" />
+    <Picture src={`/picture/${picture}`} alt={`Picture of ${name}`} />
     <Text>
       {name}
     </Text>
