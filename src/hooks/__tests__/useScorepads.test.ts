@@ -32,6 +32,14 @@ describe('useScorepads', () => {
     expect(apiResult).toStrictEqual([]);
   });
 
+  it('returns an error when the useApi call return an error', () => {
+    const error = new Error('API Error');
+    (useApi as jest.Mock).mockReturnValue([error, null]);
+
+    const { result } = renderHook(() => useScorepads('JanK'));
+    expect(result.current[0]).toBe(error);
+  });
+
   it('returns a reformated scorepad array when given a scorepad array as input', () => {
     (useApi as jest.Mock).mockReturnValue([null, [{
       _id: '1', game: 'JanK', players: [{ _id: '12', name: 'Matteo', picture: '' }], created_at: '2021-02-07T16:22:55.000Z',
