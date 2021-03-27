@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { format } from 'date-fns';
 import useErrorHandler from '../../hooks/useErrorHandler';
 import { remove } from '../../services/api.service';
 import { deleteScorepad } from './actions';
@@ -23,7 +22,7 @@ const Scorepad = ({
     dispatch(deleteScorepad(id));
   }, [dispatch, id]);
   const [error, onClick] = useErrorHandler(callback);
-  const formattedDate = format(new Date(date), ' dd.MM.yyyy');
+  const formattedDate = new Date(date).toLocaleDateString();
 
   return (
     <Frame>
@@ -32,7 +31,7 @@ const Scorepad = ({
       ))}
       <Text>
         Erstellt am:
-        {formattedDate}
+        {` ${formattedDate}`}
       </Text>
       <LoadButton type="button">Spiel laden</LoadButton>
       <DeleteButton onClick={onClick} type="button">Spiel löschen</DeleteButton>
