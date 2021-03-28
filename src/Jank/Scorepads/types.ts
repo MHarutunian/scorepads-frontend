@@ -17,7 +17,19 @@ export enum ScorepadActionType {
   Delete,
 }
 
-export interface ScorepadAction {
-  type: ScorepadActionType,
-  payload: Scorepad[] | Scorepad | string,
+export interface SetScorepadsAction {
+  type: ScorepadActionType.Set,
+  payload: Scorepad[],
 }
+
+export interface AddScorepadAction {
+  type: ScorepadActionType.Add,
+  payload: Scorepad,
+}
+
+export interface DeleteScorepadAction {
+  type: ScorepadActionType.Delete,
+  payload: string,
+}
+
+export type ScorepadAction = SetScorepadsAction | AddScorepadAction | DeleteScorepadAction;

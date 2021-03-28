@@ -10,9 +10,9 @@ import { Scorepad, ScorepadAction, ScorepadActionType } from './types';
 const reducer = (state: Scorepad[], action: ScorepadAction) => {
   switch (action.type) {
     case ScorepadActionType.Set:
-      return action.payload as Scorepad[];
+      return action.payload;
     case ScorepadActionType.Add:
-      return [...state, action.payload as Scorepad];
+      return [...state, action.payload];
     case ScorepadActionType.Delete:
       return state.filter(({ id }) => id !== action.payload);
     default:
