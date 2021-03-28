@@ -23,10 +23,8 @@ describe('Scorepad', () => {
   it('renders scorepads received from the api', async () => {
     get.mockResolvedValue([{ _id: '1', players: [{ _id: '12', name: 'Matteo', picture: '' }], created_at: '2021-02-07T16:22:55.000Z' }]);
     const { findByText } = render(<ScorepadList />);
-    const name = await findByText('Matteo');
-    expect(name).toBeInTheDocument();
-    const date = await findByText('Erstellt am: 07.02.2021');
-    expect(date).toBeInTheDocument();
+    expect(await findByText('Matteo')).toBeInTheDocument();
+    expect(await findByText('Erstellt am: 2021-2-7')).toBeInTheDocument();
   });
 
   it('removes a scorepad from the list', async () => {
@@ -35,7 +33,7 @@ describe('Scorepad', () => {
 
     get.mockResolvedValue([{ _id: '1', players: [{ _id: '12', name: 'Matteo', picture: '' }], created_at: '2021-02-07T16:22:55.000Z' }]);
 
-    const { queryByText, findByText } = render(<ScorepadList />);
+    const { findByText } = render(<ScorepadList />);
 
     const scorepadItem = (await findByText('Matteo')).closest('div');
     expect(scorepadItem).toBeInTheDocument();
@@ -44,6 +42,6 @@ describe('Scorepad', () => {
     fireEvent.click(removeButton);
 
     expect(remove).toHaveBeenCalledWith('/scorepads/1');
-    await waitForElementToBeRemoved(() => queryByText('Matteo'));
+    await waitForElementToBeRemoved(scorepadItem);
   });
 });
