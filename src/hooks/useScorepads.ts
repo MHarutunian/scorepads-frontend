@@ -31,7 +31,11 @@ const useScorepads = (game: string): [Error | null, Scorepad[] | null] => {
     date: scorepad.created_at,
   })), [apiScorepads]);
 
-  return [error, scorepads];
+  const sortedScorepads = useMemo(() => scorepads
+    && scorepads.sort((scorepadA, scorepadB) => (scorepadB.date < scorepadA.date ? -1 : 1
+    )), [scorepads]);
+
+  return [error, sortedScorepads];
 };
 
 export default useScorepads;
