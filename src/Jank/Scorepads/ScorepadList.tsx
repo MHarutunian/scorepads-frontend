@@ -15,8 +15,6 @@ const ScorepadList = () => {
     }
   }, [apiScorepads]);
 
-  scorepads.reverse();
-
   if (error) {
     return <ErrorText>Scorepads konnten leider nicht geladen werden</ErrorText>;
   }
