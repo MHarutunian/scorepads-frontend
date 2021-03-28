@@ -10,9 +10,9 @@ import { Term, TermAction, TermActionType } from './types';
 const reducer = (state: Term[], action: TermAction) => {
   switch (action.type) {
     case TermActionType.Set:
-      return action.payload as Term[];
+      return action.payload;
     case TermActionType.Add:
-      return [...state, action.payload as Term];
+      return [...state, action.payload];
     case TermActionType.Delete:
       return state.filter(({ _id }) => _id !== action.payload);
     default:
