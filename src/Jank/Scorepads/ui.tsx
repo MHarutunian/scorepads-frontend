@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 export const Frame = styled.div`
   margin: 10px;
@@ -15,7 +16,7 @@ export const Text = styled.span`
   margin: 5px 30px 5px 5px;
 `;
 
-const Button = styled.button`
+const buttonStyles = css`
   margin: 5px;
   padding: 5px 10px;
   background-color: white;
@@ -23,11 +24,14 @@ const Button = styled.button`
   border: 1px solid black;
 `;
 
-export const LoadButton = styled(Button)`
+export const LoadButton = styled(Link)`
+  ${buttonStyles}
   color: green;
+  text-decoration: none;
 `;
 
-export const DeleteButton = styled(Button)`
+export const DeleteButton = styled.button`
+  ${buttonStyles}
   color: red;
 `;
 
@@ -38,6 +42,6 @@ export const ErrorText = styled.span`
 
 export const Picture = styled.img`
   width: 50px;
-  vertical-align:middle;
+  vertical-align: middle;
   border-radius: 50%;
 `;

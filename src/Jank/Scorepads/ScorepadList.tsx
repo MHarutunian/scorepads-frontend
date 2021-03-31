@@ -4,6 +4,7 @@ import ScorepadItem from './Scorepad';
 import { setScorepads } from './actions';
 import reducer from './reducer';
 import { ErrorText } from './ui';
+import Header from './Header';
 
 const ScorepadList = () => {
   const [error, apiScorepads] = useScorepads('JanK');
@@ -20,7 +21,7 @@ const ScorepadList = () => {
   }
   return (
     <>
-      <h3>Bestehende Spiele:</h3>
+      <Header />
       <div>
         {scorepads.map((scorepad) => (
           <ScorepadItem
