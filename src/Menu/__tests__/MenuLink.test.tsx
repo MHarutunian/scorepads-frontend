@@ -7,14 +7,14 @@ import {
   render,
 } from '@testing-library/react';
 
-import GameLink from '../GameLink';
+import MenuLink from '../MenuLink';
 
-describe('GameLink', () => {
+describe('MenuLink', () => {
   it('renders children', () => {
     const { getByText } = render(
-      <GameLink to="/anything">
+      <MenuLink to="/anything">
         Some Game
-      </GameLink>,
+      </MenuLink>,
       { wrapper: MemoryRouter },
     );
 
@@ -24,15 +24,15 @@ describe('GameLink', () => {
   it('renders clickable link', () => {
     const { getByText } = render(
       <BrowserRouter>
-        <GameLink to="/some-game">
+        <MenuLink to="/some-game">
           Some Game
-        </GameLink>
+        </MenuLink>
       </BrowserRouter>,
     );
 
-    const gameLink = getByText('Some Game');
+    const link = getByText('Some Game');
 
-    fireEvent.click(gameLink);
+    fireEvent.click(link);
 
     expect(window.location.pathname).toBe('/some-game');
   });

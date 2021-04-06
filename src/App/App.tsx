@@ -5,24 +5,32 @@ import {
 } from 'react-router-dom';
 
 import List from '../UserManagement/List';
-import Header from '../Header';
-import TermList from '../Jank/TermManagement/TermList';
-import ScorepadList from '../Jank/Scorepads/ScorepadList';
+import Menu from '../Menu/Menu';
+import { GlobalStyles } from './ui';
+import JankSwitch from '../Jank/JankSwitch';
+import Home from '../Home/Home';
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <GlobalStyles />
       <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route path="/users">
+          <Menu>
+            <h2>TODO</h2>
+          </Menu>
           <List />
         </Route>
         <Route path="/doppelkopf">
-          <h2>TODO</h2>
+          <Menu>
+            <h2>TODO</h2>
+          </Menu>
         </Route>
         <Route path="/jank">
-          <ScorepadList />
-          <TermList />
+          <JankSwitch />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -21,7 +21,7 @@ const Scorepad = ({
     await remove(`/scorepads/${id}`);
     dispatch(deleteScorepad(id));
   }, [dispatch, id]);
-  const [error, onClick] = useErrorHandler(callback);
+  const [error, handleDelete] = useErrorHandler(callback);
   const formattedDate = new Date(date).toLocaleDateString();
 
   return (
@@ -33,8 +33,8 @@ const Scorepad = ({
         Erstellt am:
         {` ${formattedDate}`}
       </Text>
-      <LoadButton type="button">Spiel laden</LoadButton>
-      <DeleteButton onClick={onClick} type="button">Spiel löschen</DeleteButton>
+      <LoadButton to={`/jank/${id}`}>Spiel laden</LoadButton>
+      <DeleteButton onClick={handleDelete} type="button">Spiel löschen</DeleteButton>
       {error && <ErrorText>Scorepad konnte nicht gelöscht werden.</ErrorText>}
     </Frame>
   );

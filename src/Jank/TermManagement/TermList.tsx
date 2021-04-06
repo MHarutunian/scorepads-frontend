@@ -7,6 +7,7 @@ import { Term } from './types';
 import { ErrorText } from './ui';
 import { setTerms } from './actions';
 import AddTermForm from './AddTermForm';
+import Header from './Header';
 
 const TermList = () => {
   const [error, apiTerms] = useApi<Term[]>('/jank/terms');
@@ -23,7 +24,7 @@ const TermList = () => {
   }
   return (
     <>
-      <h1>Begriffe verwalten</h1>
+      <Header />
       <AddTermForm dispatch={dispatch} />
       <ul>
         {terms && terms.map(({ _id, value }) => (
