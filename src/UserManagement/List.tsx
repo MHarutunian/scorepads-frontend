@@ -1,14 +1,10 @@
 import User from './User';
 import useApi from '../hooks/useApi';
-
-type Player = {
-  _id: string,
-  name: string,
-  picture: string | null
-}
+import { ApiPlayer, mapPlayers } from '../services/map.service';
+import { Player } from '../Jank/Scorepads/types';
 
 const List = () => {
-  const [error, players] = useApi<Player[]>('/players');
+  const [error, players] = useApi<ApiPlayer[], Player[]>('/players', mapPlayers);
 
   if (error) {
     return <span>Spieler konnten leider nicht geladen werden</span>;
@@ -18,8 +14,8 @@ const List = () => {
     <>
       <h1>List</h1>
       <ul>
-        {players && players.map(({ _id, name }) => (
-          <li key={_id}>
+        {players && players.map(({ id, name }) => (
+          <li key={id}>
             <User name={name} />
           </li>
         ))}
