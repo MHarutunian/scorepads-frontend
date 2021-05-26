@@ -16,7 +16,7 @@ const PlayerCard = ({ playerId, name, picture = defaultPicture }: PlayerProps) =
   return (
 
     <Card to={`${scorepadId}/${playerId}`}>
-      <Picture src={`/picture/${picture}`} alt={`Picture of ${name}`} />
+      <Picture src={`/picture/${picture}`} alt={`Bild von ${name}`} />
       {name}
     </Card>
   );
