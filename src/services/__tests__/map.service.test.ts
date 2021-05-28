@@ -30,6 +30,13 @@ describe('players mapper', () => {
 
     expect(result).toStrictEqual(expectedResult);
   });
+
+  it('returns an empty array when given an empty array', async () => {
+    const expectedResult: any[] = [];
+    const result = mapPlayers([]);
+
+    expect(result).toStrictEqual(expectedResult);
+  });
 });
 
 describe('terms mapper', () => {
