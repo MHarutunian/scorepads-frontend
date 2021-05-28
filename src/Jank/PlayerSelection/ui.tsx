@@ -19,26 +19,26 @@ export const PlayerGrid = styled.div`
   width: 90%;
 `;
 export const Picture = styled.img`
-border-radius: 5%;
-margin-bottom: 50px;
-width: 100%;
+  border-radius: 5%;
+  margin-bottom: 50px;
+  width: 100%;
 `;
 
 export const Card = styled(Link)`
-align-items: center;
-background: transparent;
-border: medium solid black;
-border-radius: 5%;
-color: black;
-display: flex;
-flex-direction: column;
-font-weight: bold;
-font-size: x-large;
-justify-content: space-between;
-margin: 20px;
-padding: 0;
-text-decoration: none;
-width: 25%;
+  align-items: center;
+  background: transparent;
+  border: medium solid black;
+  border-radius: 5%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: x-large;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 0;
+  text-decoration: none;
+  width: 25%;
   &:hover {
     background-color: green;
   }
