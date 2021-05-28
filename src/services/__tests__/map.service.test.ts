@@ -66,6 +66,13 @@ describe('terms mapper', () => {
 
     expect(result).toStrictEqual(expectedResult);
   });
+
+  it('returns an empty array when given an empty array', async () => {
+    const expectedResult: any[] = [];
+    const result = mapTerms([]);
+
+    expect(result).toStrictEqual(expectedResult);
+  });
 });
 
 describe('scorepad mapper', () => {
@@ -163,6 +170,13 @@ describe('scorepads mapper', () => {
       },
     ];
     const result = mapScorepads(unmappedScorepads);
+
+    expect(result).toStrictEqual(expectedResult);
+  });
+
+  it('returns an empty array when given an empty array', async () => {
+    const expectedResult: any[] = [];
+    const result = mapScorepads([]);
 
     expect(result).toStrictEqual(expectedResult);
   });
