@@ -1,25 +1,19 @@
-import { useParams } from 'react-router-dom';
-import defaultPicture from '../../UserManagement/user_default.png';
+import { Player } from '../Scorepads/types';
 import { Picture, Card } from './ui';
 
-type PlayerProps = {
-  playerId: string;
-  name: string;
-  picture: string;
+type CardProbs = {
+  player: Player;
+  scorepadId: string;
 }
 
-interface ScorepadParams {
-  scorepadId: string
-}
-const PlayerCard = ({ playerId, name, picture = defaultPicture }: PlayerProps) => {
-  const { scorepadId } = useParams<ScorepadParams>();
-  return (
+const PlayerCard = (
+  { player, scorepadId }: CardProbs,
+) => (
 
-    <Card to={`${scorepadId}/${playerId}`}>
-      <Picture src={`/picture/${picture}`} alt={`Bild von ${name}`} />
-      {name}
-    </Card>
-  );
-};
+  <Card to={`${scorepadId}/${player.id}`}>
+    <Picture src={`/picture/${player.picture}`} alt={`Bild von ${player.name}`} />
+    {player.name}
+  </Card>
+);
 
 export default PlayerCard;

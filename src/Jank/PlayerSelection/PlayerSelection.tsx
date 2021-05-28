@@ -24,8 +24,12 @@ const PlayerSelection = () => {
       <Header />
       <DescriptionText>Bitte sag mir wer du bist, um am Spiel teilzunehmen</DescriptionText>
       <PlayerGrid>
-        {scorepad && scorepad.players.map(({ id: playerId, name, picture }) => (
-          <PlayerCard key={playerId} playerId={playerId} name={name} picture={picture} />
+        {scorepad && scorepad.players.map((player) => (
+          <PlayerCard
+            key={player.id}
+            player={player}
+            scorepadId={scorepadId}
+          />
         ))}
       </PlayerGrid>
     </>
