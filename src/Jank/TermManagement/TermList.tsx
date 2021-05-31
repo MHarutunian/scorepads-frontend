@@ -8,9 +8,10 @@ import { ErrorText } from './ui';
 import { setTerms } from './actions';
 import AddTermForm from './AddTermForm';
 import Header from './Header';
+import { mapTerms } from '../../services/map.service';
 
 const TermList = () => {
-  const [error, apiTerms] = useApi<Term[]>('/jank/terms');
+  const [error, apiTerms] = useApi<Term[], Term[]>('/jank/terms', mapTerms);
   const [terms, dispatch] = useReducer(reducer, []);
 
   useEffect(() => {

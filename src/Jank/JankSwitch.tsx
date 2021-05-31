@@ -1,7 +1,8 @@
 import { Route, Switch } from 'react-router-dom';
-import Match from './Match/Match';
+import PlayerSelection from './PlayerSelection/PlayerSelection';
 import ScorepadList from './Scorepads/ScorepadList';
 import TermList from './TermManagement/TermList';
+import Match from './Match/Match';
 
 const JankSwitch = () => (
   <Switch>
@@ -11,7 +12,10 @@ const JankSwitch = () => (
     <Route path="/jank/terms">
       <TermList />
     </Route>
-    <Route path="/jank/:scorepadId">
+    <Route exact path="/jank/:scorepadId">
+      <PlayerSelection />
+    </Route>
+    <Route path="/jank/:scorepadId/:playerId">
       <Match />
     </Route>
   </Switch>

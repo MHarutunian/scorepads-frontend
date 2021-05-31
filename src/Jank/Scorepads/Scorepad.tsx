@@ -33,7 +33,13 @@ const Scorepad = ({
         Erstellt am:
         {` ${formattedDate}`}
       </Text>
-      <LoadButton to={`/jank/${id}`}>Spiel laden</LoadButton>
+      <LoadButton to={{
+        pathname: `/jank/${id}`,
+        state: { scorepad },
+      }}
+      >
+        Spiel laden
+      </LoadButton>
       <DeleteButton onClick={handleDelete} type="button">Spiel löschen</DeleteButton>
       {error && <ErrorText>Scorepad konnte nicht gelöscht werden.</ErrorText>}
     </Frame>

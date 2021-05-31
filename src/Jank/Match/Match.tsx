@@ -4,11 +4,12 @@ import Menu from '../../Menu/Menu';
 import * as ui from './ui';
 
 type MatchParams = {
-  scorepadId: string
+  scorepadId: string;
+  playerId: string;
 }
 
 const Match = () => {
-  const { scorepadId } = useParams<MatchParams>();
+  const { scorepadId, playerId } = useParams<MatchParams>();
 
   return (
     <ui.Page>
@@ -16,6 +17,8 @@ const Match = () => {
         TODO:
         {' '}
         {scorepadId}
+        {' '}
+        {playerId}
       </Menu>
     </ui.Page>
   );

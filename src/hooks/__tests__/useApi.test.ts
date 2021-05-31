@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
+import { mapTerms } from '../../services/map.service';
 
 import useApi from '../useApi';
 
@@ -6,7 +7,7 @@ describe('useApi', () => {
   it('returns empty error and result while fetching', () => {
     // we use a promise here that never returns anything, so the hook never returns a result
     jest.spyOn(window, 'fetch').mockImplementationOnce(() => new Promise<Response>(() => { }));
-    const { result } = renderHook(() => useApi('/foo/loading'));
+    const { result } = renderHook(() => useApi('/foo/loading', mapTerms));
     const [error, apiResult] = result.current;
 
     expect(error).toBeNull();
@@ -18,7 +19,7 @@ describe('useApi', () => {
     const response = new Response(JSON.stringify(expectedResult));
     jest.spyOn(window, 'fetch').mockResolvedValue(response);
 
-    const { result, waitForNextUpdate } = renderHook(() => useApi('/foo/success'));
+    const { result, waitForNextUpdate } = renderHook(() => useApi('/foo/success', mapTerms));
 
     await waitForNextUpdate();
 
@@ -32,7 +33,7 @@ describe('useApi', () => {
     const expectedError = new Error('Expected error');
     jest.spyOn(window, 'fetch').mockRejectedValue(expectedError);
 
-    const { result, waitForNextUpdate } = renderHook(() => useApi('/foo/error'));
+    const { result, waitForNextUpdate } = renderHook(() => useApi('/foo/error', mapTerms));
 
     await waitForNextUpdate();
 

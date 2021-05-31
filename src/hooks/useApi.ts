@@ -1,4 +1,6 @@
-import { useEffect, useState, useCallback } from 'react';
+import {
+  useEffect, useState, useCallback, useMemo,
+} from 'react';
 
 import { get } from '../services/api.service';
 import useErrorHandler from './useErrorHandler';
@@ -10,8 +12,12 @@ import useErrorHandler from './useErrorHandler';
  * @returns the error and the result returned from the endpoint.
  *    Only one of these will be set at any time.
  */
-const useApi = <T>(path: string): [Error | null, T | null] => {
-  const [result, setResult] = useState<T | null>(null);
+const useApi = <S, T>(
+  path: string,
+  mapper: (result: S) => T,
+  initialValue?: T,
+): [Error | null, T | null] => {
+  const [result, setResult] = useState<S | null>(null);
   const callback = useCallback(async () => {
     setResult(null);
     setResult(await get(path));
@@ -19,10 +25,19 @@ const useApi = <T>(path: string): [Error | null, T | null] => {
   const [error, handler] = useErrorHandler(callback);
 
   useEffect(() => {
-    handler();
-  }, [handler]);
+    if (!initialValue) {
+      handler();
+    }
+  }, [initialValue, handler]);
 
-  return [error, result];
+  const mappedResult = useMemo(() => {
+    if (!result) {
+      return null;
+    }
+    return mapper(result);
+  }, [result, mapper]);
+
+  return [error, initialValue || mappedResult];
 };
 
 export default useApi;
