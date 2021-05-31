@@ -1,13 +1,13 @@
 import { Player } from '../Scorepads/types';
 import { Picture, Card } from './ui';
 
-type CardProbs = {
+type CardProps = {
   player: Player;
   scorepadId: string;
 }
 
 const PlayerCard = (
-  { player, scorepadId }: CardProbs,
+  { player, scorepadId }: CardProps,
 ) => (
 
   <Card to={`${scorepadId}/${player.id}`}>
