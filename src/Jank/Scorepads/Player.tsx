@@ -6,9 +6,9 @@ type PlayerProps = {
   picture: string;
 }
 
-const Player = ({ name, picture = defaultPicture }: PlayerProps) => (
+const Player = ({ name, picture }: PlayerProps) => (
   <>
-    <Picture src={`/picture/${picture}`} alt={`Picture of ${name}`} />
+    <Picture src={picture ? `/picture/${picture}` : defaultPicture} alt={`Picture of ${name}`} />
     <Text>
       {name}
     </Text>
