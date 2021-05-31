@@ -1,7 +1,7 @@
 export interface Player {
   id: string,
   name: string,
-  picture: string,
+  picture: string | null,
 }
 
 export interface Scorepad {

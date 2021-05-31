@@ -3,7 +3,7 @@ import defaultPicture from '../../UserManagement/user_default.png';
 
 type PlayerProps = {
   name: string;
-  picture: string;
+  picture: string | null;
 }
 
 const Player = ({ name, picture }: PlayerProps) => (
